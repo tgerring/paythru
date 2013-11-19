@@ -1,0 +1,58 @@
+$def with (hostname, sitename, googleanalyticsid)
+$var googleanalyticsid: ${googleanalyticsid}
+$var title: Developers
+$var sitename: ${sitename}
+$var hostname: ${hostname}
+
+<h2>Developers</h2>
+
+<div class="row" style="margin: 2em 0;">
+    <p id="bitcoin-message" class="alert alert-warning">
+        <img src="/static/img/bitcoin_logo.png" alt="Bitcoin coin logo" class="pull-left" style="margin-right: 1em;" />
+        <strong>New to Bitcoin?</strong>
+        <span class="clearfix">Learn more about how Bitcoin is used to send money over the internet at <a href="https://www.weusecoins.com/">We Use Coins</a> or get started now by <a href="http://bitcoin.org/en/choose-your-wallet">choosing a wallet</a>. Users in the United States can buy bitcoins with <a href="https://coinbase.com/?r=511d4d6b29aba2d27700003b">Coinbase</a>.</span>
+    </p>
+</div>
+
+<p>${sitename} loves an open web, so our information is yours to build off of. Got a great idea on how to leverage ${sitename}? Start building immediately!</p>
+
+<h4>Our "Hello World!"</h4>
+<p>If you simply want to display your registered Bitcoin address with HTML and jQuery, something like this would do:</p>
+<pre class="greenscreen">
+&lt;!-- jQuery should be loaded --&gt;
+&lt;samp id="bitcoin-address"&gt;&lt;script&gt;$$.getJSON('http://${hostname}/'+window.location.hostname,function(data){$$('#bitcoin-address').text(data.address);});&lt;/script&gt;&lt;/samp&gt;
+</pre>
+Hopefully, the result looks something like this:
+<samp id="bitcoin-address"><script>
+$$.getJSON('http://${hostname}/'+window.location.hostname,function(data){$$('#bitcoin-address').text(data.address);});
+</script></samp>
+
+<p>For something a little more advanced, just alter the HTTP Accept header for the address endpoint. We officially serve:</p>
+<ul>
+    <li>HTML when <samp class="greenscreen">application/html</samp> (This is how the our website is served)</li>
+    <li>JSON when <samp class="greenscreen">application/json</samp></li>
+    <li>XML when <samp class="greenscreen">application/xml</samp></li>
+    <li>Plaintext address when <samp class="greenscreen">text/plain</samp></li>
+</ul>
+
+<p>An example with curl: <samp class="greenscreen">curl -iLH "Accept: application/json" http://${hostname}/taylorg@ideaexcursion.com
+</samp></p>
+
+<pre class="greenscreen">
+HTTP/1.1 301 Moved Permanently
+Date: Thu, 20 Jun 2013 23:10:19 GMT
+Location: http://${hostname}/mailto%3Ataylorg%40ideaexcursion.com
+Vary: Accept-Encoding
+Content-Length: 0
+Content-Type: text/html
+
+HTTP/1.1 200 OK
+Date: Thu, 20 Jun 2013 23:10:19 GMT
+Vary: Accept
+Transfer-Encoding: chunked
+Content-Type: application/json
+
+{"addressstatus": "2", "uri": "mailto:taylorg@ideaexcursion.com", "address": "1A6u4JohUGR34yQfpzsFvVaGTmabBnqbzk"}
+</pre>
+
+

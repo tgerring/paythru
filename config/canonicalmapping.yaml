@@ -1,0 +1,16 @@
+---
+# these mapping are matched AFTER validation.yaml rules are run
+canonicalmapping:
+    - match: >
+        https?:(www.)?([A-Za-z0-9.-]+)(/(.*))?
+      sub: >
+        http:\g<2>
+    - match: >
+        https?:(www.)?twitter.com/(.+)
+      sub: >
+        twitter:\g<2>
+    - match: >
+        https?:(www.)?facebook.com/(.+)
+      sub: >
+        facebook:\g<2>
+...

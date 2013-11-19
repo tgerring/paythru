@@ -1,0 +1,56 @@
+$def with (hostname, sitename, googleanalyticsid, address, uri, addressstatus, authcode = None, resultmsg = None)
+$code:
+    statushtml = 'This is an unclaimed Bitcoin address'
+    statuscode = 'default'
+    if addressstatus == '2':
+        statuscode = 'success'
+        statushtml = 'This Bitcoin address is published!'
+    if addressstatus == '3':
+        statuscode = 'success'
+        statushtml = 'This Bitcoin address is VERIFIED!'
+    simpleuri = uri[uri.find(':') + len(':'):]
+
+$var title: $simpleuri
+$var googleanalyticsid: ${googleanalyticsid}
+$var sitename: ${sitename}
+$var hostname: ${hostname}
+
+
+<div class="panel panel-${statuscode} text-center">
+    <div class="panel-heading">${statushtml}</div>
+    <div class="panel-body" style="overflow: auto;">
+        <div class="lead">
+            <samp><a href="/${uri}">${simpleuri}</a></samp>
+            can be sent bitcoins at
+            <samp>${address}</samp>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="well col-sm-6 col-sm-offset-3">
+        $if resultmsg:
+            $resultmsg
+        $else:
+            <p>Ready to update your Bitcoin address and receive any deposits held?</p>
+            <form role="form" method="POST">
+                <div class="form-group">
+                    <label for="newaddress">Your Bitcoin address</label>
+                    <input class="form-control" type="text" name="newaddress" id="newaddress" placeholder="1ThisShouldBeYourBitcoinAddress" />
+                </div>
+                <div class="form-group">
+                    <label for="authcode">Authcode (sent via email)</label>
+                    <input class="form-control" type="text" name="authcode" id="authcode" value="${authcode}" placeholder="Check your email" />
+                </div>
+                <button type="submit" class="form-control btn btn-default"><i class="icon-save"> </i>Publish Bitcoin address</button>
+            </form>
+    </div>
+</div>
+
+<div class="row" style="margin: 2em 0;">
+    <p id="bitcoin-message" class="alert alert-warning">
+        <img src="/static/img/bitcoin_logo.png" alt="Bitcoin coin logo" class="pull-left" style="margin-right: 1em;" />
+        <strong>New to Bitcoin?</strong>
+        <span class="clearfix">Learn more about how Bitcoin is used to send money over the internet at <a href="https://www.weusecoins.com/">We Use Coins</a> or get started now by <a href="http://bitcoin.org/en/choose-your-wallet">choosing a wallet</a>. Users in the United States can buy bitcoins with <a href="https://coinbase.com/?r=511d4d6b29aba2d27700003b">Coinbase</a>.</span>
+    </p>
+</div>

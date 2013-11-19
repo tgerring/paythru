@@ -1,0 +1,41 @@
+---
+paythru:
+    hostname: localhost:8080 # hostname:post that the site runs on
+    sitename: My PAYTHRU site # name of website
+    transactionmaxageblocks: 0 # disable with -1
+    googleanalyticsid: UA-XXXXXXX-X
+    forceredirect: False # 302 redirect non-canonical entries?
+    configfiles:
+        logging: config/logging.yaml
+        canonicalmapping: config/canonicalmapping.yaml
+        validation: config/validation.yaml
+        emails: config/emails.yaml
+    maxcanonicalsearchdepth: 10
+    mysql:
+        server: localhost
+        username: paythru
+        password: paythru
+        schema: paythru
+    emailsmtp:
+        server: EMAIL_SERVER
+        username: EMAIL_USERNAME
+        password: EMAIL_PASSWORD
+        port: 587
+        usetls: True
+        emailfrom: notifications@localhost
+    bitcoind:
+        connectionstring: 'http://BITCOIN_RPC_USER:BITCOIN_RPC_PASSWORD@127.0.0.1:8332'
+        walletpassword: BITCOIN_WALLET_PASSWORD
+        networkfee: 0.0001
+        simulatesend: True
+        unlockseconds: 5
+        minconfs: 0
+    twitter:
+        OAUTH_TOKEN: 'TWITTER_OAUTH_TOKEN'
+        OAUTH_SECRET: 'TWITTER_OAUTH_SECRET'
+        CONSUMER_KEY: 'TWITTER_CONSUMER_KEY'
+        CONSUMER_SECRET: 'TWITTER_CONSUMER_SECRET'
+    twilio:
+        account_sid: 'TWILIO_ACCOUNT_SID'
+        auth_token: 'TWILIO_AUTH_TOKEN'
+...

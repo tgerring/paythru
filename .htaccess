@@ -1,0 +1,10 @@
+<Files api.py>
+    SetHandler wsgi-script
+    Options ExecCGI FollowSymLinks
+</Files>
+
+<FilesMatch "\.(gif|jpe?g|png|js|json|xm|css)$">
+    <IfModule mod_headers.c>
+        Header set Access-Control-Allow-Origin "*"
+    </IfModule>
+</FilesMatch>

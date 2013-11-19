@@ -1,0 +1,120 @@
+$def with (hostname, sitename, googleanalyticsid, address, uri, addressstatus, btcusd)
+$code:
+    statushtml = 'This is an unclaimed Bitcoin address'
+    statuscode = 'default'
+    if addressstatus == '2':
+        statuscode = 'success'
+        statushtml = 'This Bitcoin address is published!'
+    if addressstatus == '3':
+        statuscode = 'success'
+        statushtml = 'This Bitcoin address is VERIFIED!'
+    protocol = uri[:uri.find(':')]
+    simpleuri = uri[uri.find(':') + len(':'):]
+    if protocol == 'twitter' and simpleuri[:1] != '@':
+        simpleuri = '@' + simpleuri
+
+$var title: $simpleuri
+$var googleanalyticsid: ${googleanalyticsid}
+$var sitename: ${sitename}
+$var hostname: ${hostname}
+
+<div class="panel panel-${statuscode} text-center">
+    <div class="panel-heading">${statushtml}</div>
+    <div class="panel-body" style="overflow: auto;">
+        <div class="lead">
+            <samp><a href="/${uri}">${simpleuri}</a></samp>
+            can be sent bitcoins at
+            <samp class="clearfix">${address}</samp>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-4 col-md-offset-1 text-center">
+        <form id="rateconversion" role="form">
+            <div class="row form-group">
+                <div class="col-sm-12 text-right input-group">
+                    <span class="input-group-addon"><i class="icon-dollar"></i></span>
+                    <input id="amount_usd" type="text" class="form-control" value="10">
+                    <span class="input-group-addon">USD</span>
+                </div>
+            </div>
+            <span>is worth approximately</span>
+            <div class="row form-group">
+                <div class="col-sm-12 text-right input-group">
+                    <span class="input-group-addon"><i class="icon-btc"></i></span>
+                    <input id="estimatedbtc" class="form-control" type="text" value="" disabled="disabled">
+                    <span class="input-group-addon">BTC</span>
+                </div>
+                <input id="quoterate" type="hidden" value="${btcusd}" />
+            </div>
+        </form>
+    </div>
+    <div class="col-sm-4 col-md-2 text-right">
+        <a id="qr-uri" href="bitcoin:${address}?label=${uri}"><div id="qrcode"></div></a>
+    </div>
+    <div class="col-sm-3 col-md-offset-1">
+        <p><a class="btn btn-default" id="bitcoin-uri" href="bitcoin:${address}?label=${uri}"><i class="icon-fixed-width icon-external-link"></i> Send <span id="amount_descr"></span>bitcoins</a></p>
+
+        <p><a class="btn btn-default" href="http://blockchain.info/address/${address}" title="Blockchain.info" target="_blank"><i class="icon-fixed-width icon-list"></i> View blockchain transactions</a></p>
+
+        <form action="/${uri}" role="form" method="POST"><button type="submit" class="btn btn-default"><i class="icon-fixed-width icon-refresh"></i> Check for updated address</button></form>
+    </div>
+</div>
+
+<div class="row" style="margin: 2em 0;">
+    <p id="bitcoin-message" class="alert alert-warning">
+        <img src="/static/img/bitcoin_logo.png" alt="Bitcoin coin logo" class="pull-left" style="margin-right: 1em;" />
+        <strong>New to Bitcoin?</strong>
+        <span class="clearfix">Learn more about how Bitcoin is used to send money over the internet at <a href="https://www.weusecoins.com/">We Use Coins</a> or get started now by <a href="http://bitcoin.org/en/choose-your-wallet">choosing a wallet</a>. Users in the United States can buy bitcoins with <a href="https://coinbase.com/?r=511d4d6b29aba2d27700003b">Coinbase</a>.</span>
+    </p>
+</div>
+
+<script src="/static/js/vendor/qrcode.min.js"></script>
+<script type="text/javascript">
+var qrcode = new QRCode("qrcode", {
+        text: "bitcoin:${address}?label=${uri}",
+        width: 180,
+        height: 180,
+        colorDark : "#000000",
+        colorLight : "#ffffff",
+        correctLevel : QRCode.CorrectLevel.H
+    });
+
+function makeText (amount) {
+    var theText = "bitcoin:${address}?label=${uri}";
+
+    if (amount)
+        theText += ("&amount=" + amount.toString());
+
+    return theText
+}
+
+function updateEstimate() {
+    var amount = $$('#amount_usd').val();
+    var rate = $$('#quoterate').val();
+    if (!rate)
+        return;
+
+    var estimate = parseFloat((amount / rate), 10).toFixed(6);
+    if (amount.length > 0 && !isNaN(estimate) && estimate > 0) {
+        $$('#estimatedbtc').val(estimate.toString());
+        $$('#qr-uri').attr("href", makeText(estimate))
+        $$('#bitcoin-uri').attr("href", makeText(estimate))
+        $$('#amount_descr').html(estimate.toString() + ' ');
+        qrcode.makeCode(makeText(estimate));
+    } else {
+        $$('#estimatedbtc').val('');
+        $$('#qr-uri').attr("href", makeText())
+        $$('#bitcoin-uri').attr("href", makeText())
+        $$('#amount_descr').html('');
+        qrcode.makeCode(makeText());
+    }
+
+}
+
+$$(document).ready(function() {
+    updateEstimate();
+    $$('#amount_usd').keyup(function(){ updateEstimate(); });
+});
+</script>

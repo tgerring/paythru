@@ -1,0 +1,38 @@
+$def with (hostname, sitename, googleanalyticsid)
+$var googleanalyticsid: ${googleanalyticsid}
+$var title: About
+$var sitename: ${sitename}
+$var hostname: ${hostname}
+
+<h2>About</h2>
+
+<div class="row" style="margin: 2em 0;">
+    <p id="bitcoin-message" class="alert alert-warning">
+        <img src="/static/img/bitcoin_logo.png" alt="Bitcoin coin logo" class="pull-left" style="margin-right: 1em;" />
+        <strong>New to Bitcoin?</strong>
+        <span class="clearfix">Learn more about how Bitcoin is used to send money over the internet at <a href="https://www.weusecoins.com/">We Use Coins</a> or get started now by <a href="http://bitcoin.org/en/choose-your-wallet">choosing a wallet</a>. Users in the United States can buy bitcoins with <a href="https://coinbase.com/?r=511d4d6b29aba2d27700003b">Coinbase</a>.</span>
+    </p>
+</div>
+
+<h2>What?</h2>
+<p>${sitename} is designed to allow tipping or paying to any URI. Right now, we support websites and email addresses. Support is planned for Twitter, Facebook, IRC, or anything else the community wants.</p>
+
+<h2>Why?</h2>
+<p>Tip bots are great, but the need to first register an account and deposit money with them is cumbersome. ${sitename} was created to remove those barriers by unifying all "tipping" methods into a single interface without requiring pre-registration of any kind.</p>
+
+<h2>How?</h2>
+<p>${sitename} will attempt to notify the URI owner that they've received payment (for example, via <a href="https://en.wikipedia.org/wiki/Whois" title="WHOIS - Wikipedia">WHOIS</a> email addresses). When the owner claims the URI through a <a href="#publishingmethods">published method</a>, we report <em>their</em> deposit address along with the claim status in every request.</p>
+
+<h4 id="publishingmethods" name="publishingmethods">Published address verification</h4>
+<ul class="icons-ul">
+	<li><i class="icon-li icon-ok"></i>mailto: authorization code emailed to owner</li>
+	<li><i class="icon-li icon-ok"></i>http: "bitcoin." DNS TXT entry containing the Bitcoin address</li>
+	<li><i class="icon-li icon-ok"></i>http: "bitcoin" HTML meta tag. For example: <samp class="greenscreen">&lt;meta name="bitcoin" content="1PAYTHRUo5D3jAzGFbLDzjyN7FrZkbuTYo" /&gt;</samp></li>
+	<li><i class="icon-li icon-ok"></i>http: page scraping for most occuring "valid" Bitcoin address</li>
+	<li><i class="icon-li icon-ok"></i>twitter: address in profile description</li>
+	<li><i class="icon-li icon-remove"></i><del>facebook:</del> (Not yet implemented)</li>
+	<li><i class="icon-li icon-remove"></i><del>irc: registered with gribble bot</del> (Not yet implemented)</li>
+</ul>
+
+<h2>Who?</h2>
+<p>${sitename} is being actively developed by <a href="http://taylorgerring.com">Taylor Gerring</a> who can be reached at taylorg@ideaexcursion.com</p>

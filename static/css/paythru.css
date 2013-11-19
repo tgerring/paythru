@@ -1,0 +1,284 @@
+html, body {
+    font-family: Helvetica, Arial, sans-serif;
+    line-height: 150%;
+    background-color: #DCDCDC;
+}
+
+pre, samp, code {
+    overflow: auto;
+    background-color: #EEE8AA;
+    color: black;
+    /*border: 1px solid black;*/
+}
+
+pre {
+    padding: 1ex;
+
+}
+
+samp, code {
+    white-space: pre-line;
+    padding: 0.3ex;
+}
+
+a {
+    /*white-space: nowrap;*/
+    color: black;
+    text-decoration: underline;
+}
+
+a:visited {
+    color: black;
+    text-decoration: underline;
+}
+
+#wrapper {
+
+    margin: 0;
+    padding: 1em;
+    width: 750px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 3em;
+    /*box-shadow: 8px 8px 5px #888;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 8px;*/
+}
+
+#site-title {
+    margin: 0;
+    padding: 1ex;
+    text-align: center;
+
+    color: black;
+    background-color: #EEE8AA;
+    height: 100px;
+    border: 1px solid black;
+    border-bottom: none;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+
+}
+
+#content {
+    margin: 0;
+    padding: 1em;
+    background-color: #F0FFFF;
+    border: 1px solid black;
+    border-top: none;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    _min-height: 25em;
+    _overflow: auto;
+}
+#navcontainer {
+    margin: 0;
+    padding: 0;
+}
+
+#navcontainer p {
+    margin-left: -1000px;
+    display: none;
+    visibility: hidden;
+}
+
+#navcontainer ul {
+
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    text-align: center;
+    width: 100%;
+    background-color: black;
+}
+
+#navcontainer ul li {
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    width: 130px;
+}
+
+#navcontainer ul li a {
+    text-decoration: none;
+    display: block;
+    padding: 0.2em 1em;
+    color: #F0FFFF;
+    background-color: #000000;
+}
+
+#title-main {
+    float: left;
+    font-size: 125%
+}
+
+#title-main a {
+    text-decoration: none;
+    color: #000000;
+}
+
+#title-sub {
+    margin-top: 1em;
+    float: left;
+    clear: both;
+    font-size: 75%
+}
+
+#footer {
+    font-size: 40%;
+    text-align: center;
+    visibility: hidden;
+}
+
+#bitcoin-message {
+    background-image: url('/static/img/bitcoin_logo.png');
+    background-repeat: no-repeat;
+    background-position: left center;
+    border-top: 2px solid silver;
+    border-bottom: 2px solid silver;
+    margin: 3em 1em 3em 0;
+}
+
+#bitcoin-message p {
+    margin: 2em 1em 2em 0;
+    padding-left: 100px;
+}
+
+#site-slogan {
+    float: right;
+}
+
+#content-main {
+    text-align: center;
+}
+
+#bigform {
+    text-align: left;
+    font-size: 200%;
+}
+
+#bigform samp {
+    padding-right: 0;
+    margin-right: 0;
+}
+
+#bigform input {
+    font-size: 100%;
+}
+
+#bigform input[type='url'] {
+    padding: 0;
+    margin: 0;
+    width: 32ex;
+}
+
+#bigform input[type='submit'] {
+    width: 6ex;
+}
+
+#claimform input[type='text'] {
+    width: 40ex;
+}
+
+.verylarge {
+    font-size: 150%;
+}
+
+.spaceleft {
+    margin-left: 1ex;
+}
+
+.half-left {
+    width: 320px;
+    display: inline-block;
+    margin-right: 1em;
+    padding-right: 0;
+    border-right: 1px solid silver;
+}
+
+.clearboth {
+    clear: both;
+    display: inline-block;
+}
+
+.greenscreen {
+    background-color: black;
+    color: #32CD32;
+    overflow: auto;
+    font-size: 75%;
+}
+
+.attention {
+    color: #D00000;
+    font-weight: bold;
+}
+
+.nounderline {
+    text-decoration: none;
+}
+
+.center {
+    text-align: center;
+}
+
+.inlineblock {
+    display: inline-block;
+}
+
+label.magiclabel {
+    position: absolute;
+    padding: 0.5ex;
+    color: silver;
+    width: 32ex;
+}
+
+#bitcoin-address {
+    font-family: monospace, serif;
+    _font-family: 'courier new', monospace;
+    font-size: 1em;
+    border: 1px solid black;
+}
+
+#qrcode {
+    display: inline-block;
+    width: 160px;
+    height: 160px;
+    margin-bottom: -3px;
+}
+
+#rateconversion {
+    margin: 2em;
+}
+
+#rateconversion input {
+    width: 12ex;
+}
+
+#bitcoin-uri img {
+    width: 160px;
+    height: 160px;
+    vertical-align: text-bottom;
+}
+
+#dashordash {
+    display: inline-block;
+    margin: -80px 1em 0 1em;
+}
+
+#homepage-features ul {
+  list-style: none;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+#homepage-features li {
+  padding-left: 1em;
+  text-indent: -1em;
+  display: inline-block;
+}
+
+#homepage-features li:before {
+  content: "✔";
+  padding-right: 5px;
+}

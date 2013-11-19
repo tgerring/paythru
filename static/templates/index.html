@@ -1,0 +1,45 @@
+$def with (hostname, sitename, googleanalyticsid)
+$var googleanalyticsid: ${googleanalyticsid}
+$var sitename: ${sitename}
+$var hostname: ${hostname}
+$var title: The easiest way to send bitcoins
+
+
+<p class="lead text-center">Send bitcoins via <a href="/@TaylorGerring">Twitter</a>, <a href="/taylorg@ideaexcursion.com">email</a>, or to a <a href="/www.taylorgerring.com">website</a>. SMS and Facebook coming soon.</p>
+
+<form id="bigform" role="form">
+	<div class="form-group row">
+		<div class="col-sm-8">
+			<label class="sr-only" for="biguserinput">URI</label>
+			<input id="biguserinput" type="url" class="form-control input-lg" placeholder="taylorg@ideaexcursion.com" autofocus="autofocus" autocomplete="off" >
+		</div>
+		<div class="col-sm-4">
+			<button type="submit" class="btn btn-default input-lg form-control" onclick="javascript:window.location=encodeURIComponent(document.getElementById('biguserinput').value); return false;"><i class="icon-fixed-width icon-search"></i> Lookup Bitcoin address</button>
+		</div>
+	</div>
+</form>
+
+<div class="row" style="margin: 3em 0;">
+	<p id="bitcoin-message" class="col-lg-8 col-lg-offset-2 alert alert-warning">
+		<img src="/static/img/bitcoin_logo.png" alt="Bitcoin coin logo" class="pull-left" style="margin-right: 1em;" />
+		<strong>New to Bitcoin?</strong>
+		<span class="clearfix">Learn more about how Bitcoin is used to send money over the internet at <a href="https://www.weusecoins.com/">We Use Coins</a> or get started now by <a href="http://bitcoin.org/en/choose-your-wallet">choosing a wallet</a>. Users in the United States can buy bitcoins with <a href="https://coinbase.com/?r=511d4d6b29aba2d27700003b">Coinbase</a>.</span>
+	</p>
+</div>
+
+<div class="row">
+	<p class="col-sm-4">
+		<strong class="clearfix"><i class="icon-ban-circle icon-fixed-width"></i> No accounts</strong>
+		Send bitcoins to anyone, even if they've never used Bitcoin before. We'll set up a deposit address until they publish their own. Read <a href="/about#publishingmethods">how to publish your Bitcoin address</a>.
+	</p>
+
+	<p class="col-sm-4">
+		<strong class="clearfix"><i class="icon-exchange icon-fixed-width"></i> Auto-refunds</strong>
+		Funds are automatically refunded to the sender if not claimed after about 2 weeks. Read more about refunds in our <a href="/faq">FAQ</a>.
+	</p>
+
+	<p class="col-sm-4">
+		<strong class="clearfix"><i class="icon-code icon-fixed-width"></i> Open API</strong>
+		Anyone can build off our data with a friendly RESTful <abbr title="Application Programming Interface" class="initialism">API</abbr>. Supporting JSON, XML, and TEXT, our <a href="/developers">developer page</a> is short and sweet.
+	</p>
+</div>

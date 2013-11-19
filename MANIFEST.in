@@ -1,0 +1,5 @@
+include MANIFEST.in
+include .htaccess
+recursive-include templates *
+recursive-include config *.yaml
+recursive-include static *

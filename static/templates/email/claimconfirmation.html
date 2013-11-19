@@ -1,0 +1,17 @@
+$def with (hostname, kwargs)
+$code:
+	po = kwargs.get('po')
+	authcode = kwargs.get('authcode', None)
+	if authcode: authstring = '/claim/' + authcode
+$var title: ${po.uri}
+$var hostname: ${hostname}
+
+<p>Someone is trying to re-claim your page at <a href="http://${hostname}/${po.uri}">${hostname}/${po.uri}</a>. This might just be you updating a <a href="http://${hostname}/about#published-methods">publishing method</a>.
+$if authcode:
+	In case you need a new authcode, here's a handy link prefilled to your <a href="http://${hostname}/${po.uri}${authstring}">claim page</a>. The code itself is ${authcode}.
+$else:
+	If any funds were held by our servers, they have been sent to your published address, <samp>${po.address}</samp>.
+At any time, you can always update the Bitcoin address or re-claim funds by using the re-claim button at the bottom of <a href="http://${hostname}/${po.uri}">your page</a>.
+</p>
+<hr />
+<p><img src="http://${hostname}/static/img/bitcoin_logo.png" alt="Bitcoin logo" style="float: left; margin-right: 1em;" />New to Bitcoin? Learn more about how Bitcoin is used to send money over the internet at <a href="https://www.weusecoins.com/">We Use Coins</a> or get started now by <a href="http://bitcoin.org/en/choose-your-wallet">choosing a wallet</a>.</p>

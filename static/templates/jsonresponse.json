@@ -1,0 +1,6 @@
+$def with (hostname, sitename, googleanalyticsid, address, uri, addressstatus, btcusd)
+{
+	"address": "${address}",
+	"uri": "${uri}",
+	"addressstatus": "${addressstatus}"
+}

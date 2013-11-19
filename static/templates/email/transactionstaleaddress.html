@@ -1,0 +1,13 @@
+$def with (hostname, kwargs)
+$code:
+	po = kwargs.get('po')
+	outputtx = kwargs.get('outputtx')
+	valuebtc = outputtx['value'] / 1e8
+$var title: ${outputtx['addr']}
+
+<p>Hey there, you received a Bitcoin payment at <samp>${outputtx['addr']}</samp> in the amount of ${valuebtc}! Unfortunately, this is a payment to an old address which we generated for you. As a courtesy, we've automatically forwarded it to <samp><a href="http://${hostname}/${po.uri}">${po.address}</a></samp>
+</p>
+<p>You can update your Bitcoin address at any time by using the re-claim button at the bottom of <a href="http://${hostname}/${po.uri}">your page</a>.
+</p>
+<hr />
+<p><img src="http://${hostname}/static/img/bitcoin_logo.png" alt="Bitcoin logo" style="float: left; margin-right: 1em;" />New to Bitcoin? Learn more about how Bitcoin is used to send money over the internet at <a href="https://www.weusecoins.com/">We Use Coins</a> or get started now by <a href="http://bitcoin.org/en/choose-your-wallet">choosing a wallet</a>.</p>

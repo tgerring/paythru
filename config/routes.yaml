@@ -1,0 +1,25 @@
+---
+appconfigpath: config/app.yaml
+routes:
+    - {route: '/twilio', class: smsmessage}
+    - {route: '/blocklatest', class: blocknotification}
+    - {route: '/', class: index}
+    - {route: '/about/?', class: about}
+    - {route: '/developers/?', class: developers}
+    - {route: '/faq/?', class: faq}
+    - {route: '/(.*)/claim(/.*)?', class: claim}
+    - {route: '/bitcoin.id/(.*)', class: getaddress}
+    - {route: '/(.*)', class: getaddress}
+currencies:
+    bitcoin: bitcoin
+    btc: bitcoin
+    #litecoin: litecoin
+    #ltc: litecoin
+templates:
+    pages:
+        dirpath: static/templates
+        base: pagetemplate_bootstrap
+    endpoints:
+        dirpath: static/templates
+        base: pagetemplate_bootstrap
+...

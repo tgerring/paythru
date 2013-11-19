@@ -1,0 +1,11 @@
+$def with (hostname, kwargs)
+$code:
+	po = kwargs.get('po')
+	authcode = kwargs.get('authcode', None)
+$var title: ${po.uri}
+$var hostname: ${hostname}
+
+<p>Hi! Someone looked you up on <a href="http://${hostname}/${po.uri}">paythru.to/${po.uri}</a>. paythru.to helps people pay each other by publishing a directory of Bitcoin addresses. Since we couldn't find your Bitcoin address to accept deposits, we temporarily assigned <samp>${po.address}</samp>. Visit <a href="http://${hostname}/${po.uri}/claim/${authcode}">your claim page</a> to publish your own Bitcoin address and claim any funds held.</p>
+<p>http://${hostname}/${po.uri}/claim/${authcode}</p>
+<hr />
+<p><img src="http://${hostname}/static/img/bitcoin_logo.png" title="Bitcoin logo" style="float: left; margin-right: 1em;" />New to Bitcoin? Learn more about how Bitcoin is used to send money over the internet at <a href="https://www.weusecoins.com/">We Use Coins</a> or get started now by <a href="http://bitcoin.org/en/choose-your-wallet">choosing a wallet</a>.</p>

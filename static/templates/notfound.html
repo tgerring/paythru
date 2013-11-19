@@ -1,0 +1,27 @@
+$def with (hostname, sitename, googleanalyticsid)
+$var googleanalyticsid: ${googleanalyticsid}
+$var title: Did not understand
+$var hostname: ${hostname}
+$var sitename: ${sitename}
+
+<h2>Not found</h2>
+
+<div style="font-size: 400%;">:(</div>
+<p>We couldn't find what you were looking for or the resource you were requesting couldn't be understood.</p>
+<!--
+<ul>
+	<li><a href="/">Home</a></li>
+	<li><a href="/about">About</a></li>
+	<li><a href="/developers">Developers</a></li>
+	<li><a href="/@TaylorGerring">${hostname}/@TaylorGerring</a></li>
+	<li><a href="/www.ideaexcursion.com">${hostname}/www.ideaexcursion.com</a></li>
+	<li><a href="/taylorg@ideaexcursion.com">${hostname}/taylorg@ideaexcursion.com</a></li>
+</ul>
+-->
+<div class="row" style="margin: 2em 0;">
+    <p id="bitcoin-message" class="alert alert-warning">
+        <img src="/static/img/bitcoin_logo.png" alt="Bitcoin coin logo" class="pull-left" style="margin-right: 1em;" />
+        <strong>New to Bitcoin?</strong>
+        <span class="clearfix">Learn more about how Bitcoin is used to send money over the internet at <a href="https://www.weusecoins.com/">We Use Coins</a> or get started now by <a href="http://bitcoin.org/en/choose-your-wallet">choosing a wallet</a>. Users in the United States can buy bitcoins with <a href="https://coinbase.com/?r=511d4d6b29aba2d27700003b">Coinbase</a>.</span>
+    </p>
+</div>

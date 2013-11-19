@@ -1,0 +1,95 @@
+Changelog
+=========
+
+Roadmap
+--------
+* Allow users to verify address with message signature
+* Implement BIP 0015-style Namecoin support
+* Limit reclaim emails to configurable hours
+* Offload emails to third party processor
+* Use SSL connection to bitcoind
+
+2013-10-02 v0.7
+---------------
+
+* Major UI update of HTML pages, leveraging Bootstrap to provide responsive design
+* Add BTCUSD conversion form, which will update QR code and external link with resulting BTC amount
+* Fixed publishing methods page anchors
+* Implemented electrum-compatible routing with /bitcoin.id/
+* Moved hostname/sitename configuration into templates for easier branding updates
+* Add basic Twitter support
+
+
+2013-09-06 v0.6
+---------------
+
+* Added POST /blocklatest to receive block notifications in blockchain.info JSON format allowing for transaction notifications, timed refunds, etc.
+* Changed email address separator from semicolon to comma per AWS requirements
+* Added separate "generated address" field so transactions to it can be tracked
+* Added hostname configuration option to app.yaml, implementation starting in emails
+* Refund transactions if not claimed after a certain number of blocks
+* Payments to the generated address should auto-forward to the published URI
+* Added "simple uri" view to getaddress pages
+* Added `simulatesend` config option to bitcoind to make debugging easier
+* Added JS QR code and external link icons
+* Removed mini page link, though endpoint still works
+* Fixed claim bug for claimed but not published addresses
+
+2013-07-24 v0.5
+---------------
+
+* Updated bitcoin: external link to include pre-filled label parameter
+* Updated HTML/CSS to use more HTML5BP code, which should fix IE10 layout discrepancy
+* Added request logging to regular pages
+* Google analytics tracking ID moved to app.yaml
+* Fixed re-claim button & subsequent logic
+* Reorganized email template structure 
+* Collapsed homepage text into rotating label-as-placeholder on input box
+* Provide browser JS display script
+* Added meta bitcoin tag support for http
+* Added bitcoin page scrape support for http. Will return the most frequently occuring "valid" bitcoin address
+
+2013-07-17 v0.4
+---------------
+
+* Added "check for published address" button to get address page, which serves as an entrypoint to "tryClaimed"
+* Updated getaddress page to include more links and POST method for re-checking for a published address. This will also serve as a way to reset email authcodes
+* Re-worked MySQL code to use discrete connections for every request, which resolved a major crashing issue during multiuser sessions
+* Overhauled API html page designs for much better clarity and visuals
+* Added "testexternalsystems" configuration flag, which is useful for testing
+* Added "forceredirect" config flag to allow optional 301 redirect
+* Added /<uri>/mini endpoint as iframe-optimized size
+* Reorganized home page to better clarity
+
+2013-07-10 v0.3.1
+-----------------
+
+* Added custom notfound and badrequest templates
+* Fixed bugs related to move to http:domain.tld scheme
+* Added link on HTML template to Blockchain.info page
+* Merged validators/ into lib/
+* Moved email templating to config file
+* User input of bitcoin address is now validated
+* Split email composition from email send module
+* Include /static/ in MANIFEST.in, which initially contains common assets such as robots.txt
+* Overhauled HTML template
+* Added favicon to /static/
+* Added code for bitcoin-qt keypoolrefill on both tryTesting() and generateNewAddress()
+
+2013-07-05 v0.2
+---------------
+
+* Preceed MySQL calls with ping function to re-establish idle aborted queries to thwart MySQL's default 8-hour connection time limit
+* Replace print debugging statements with proper logging package.
+* Rewrite of sanitization and canonical search to optimize speed and flexibility. This was the result of testing by Brad Mrumlinski <brad@edigitalstudios.com>
+* Split page templates into pagetemplate.html containing the header/footer wrapper.
+* Cleanup of various copy and improvements to website
+* Corrected setup.py to produce valid package with current package structure
+* Moved most magic values into config files. Email template are high priority for next release
+* Changed http scheme to use http:paythru.to as a canonical format due to differences between web servers with respect to how '/' is processed in a URL
+
+2013-07-01 v0.1
+---------------
+
+* Initial version, supporting mailto and certain patterns of http protocols
+* Basic email templates with domain WHOIS lookup and DNS TXT lookup

@@ -1,0 +1,39 @@
+---
+protocolactions:
+    http: &http
+        validators:
+            - dns_bitcoin
+        notifiers:
+            - email_smtp
+    https: *http
+    mailto: &mailto
+        validators: null
+        notifiers:
+            - email_smtp
+    twitter: &twitter
+        validators: null
+        notifiers: null
+regex:
+    - actions: *http
+      # http://domain.com/stuff https:domain.com/stuff http:///domain.com
+      match: >
+        https?:/{0,3}(([a-z0-9-]+\.)+[a-z]{2,6})(/.*)?
+      sub: >
+        ~http:\g<1>
+    - actions: *mailto
+      match: >
+        (|mailto:)?(([a-z0-9_.+-]+)@((?:[a-z0-9-]+\.)+[a-z]{2,6}))
+      sub: >
+        ~mailto:\g<2>
+    - actions: *http
+      # domain.com www.domain.com anything.anything.sixmax
+      match: > 
+        (([a-z0-9-]+\.)+[a-z]{2,6})
+      sub: >
+        ~http:\g<1>
+    - actions: *twitter
+      match: > 
+        (twitter:@?|@)([A-Za-z0-9_]{1,15})
+      sub: >
+        ~twitter:\g<2>
+...

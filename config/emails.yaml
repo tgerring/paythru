@@ -1,0 +1,23 @@
+---
+emails:
+    claimconfirmation:
+        subject: Trying to update your paythru.to page?
+        bodyfile: static/templates/email/claimconfirmation.html
+        template: static/templates/email/emailtemplate.html
+    newpublished:
+        subject: Someone wants to know your Bitcoin address!
+        bodyfile: static/templates/email/newpublished.html
+        template: static/templates/email/emailtemplate.html
+    newaddress:
+        subject: Publish your Bitcoin address
+        bodyfile: static/templates/email/newaddress.html
+        template: static/templates/email/emailtemplate.html
+    transaction:
+        subject: You received a Bitcoin payment!
+        bodyfile: static/templates/email/transaction.html
+        template: static/templates/email/emailtemplate.html
+    transactionstaleaddress:
+        subject: You received a Bitcoin payment!
+        bodyfile: static/templates/email/transactionstaleaddress.html
+        template: static/templates/email/emailtemplate.html
+...
